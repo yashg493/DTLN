@@ -104,9 +104,7 @@ def process_folder(model, folder_name, new_folder_name):
         print(file_names[idx] + ' processed successfully!')
     
            
-
-
-if __name__ == '__main__':
+def cli():
     # arguement parser for running directly from the command line
     parser = argparse.ArgumentParser(description='data evaluation')
     parser.add_argument('--in_folder', '-i',
@@ -129,3 +127,6 @@ if __name__ == '__main__':
     modelClass.model.load_weights(args.model)
     # process the folder
     process_folder(modelClass.model, args.in_folder, args.out_folder)
+
+if __name__ == '__main__':
+    cli()
