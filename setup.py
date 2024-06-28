@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="dtln",
-    py_modules=["dtln"],
+    py_modules=["run_evaluation"],
     version="1.0.0",
     description="Dual-signal Transformation LSTM Network",
     readme="README.md",
@@ -14,7 +14,7 @@ setup(
     author="YASH",
     url="https://github.com/yashg493/DTLN",
     license="MIT",
-    package_dir={'': 'src'},
+    package_dir={"": "src"},
     packages=find_packages(where="src", exclude=["tests*"]),
     install_requires=[
         str(r)
