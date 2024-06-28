@@ -30,7 +30,7 @@ jobs:
 
       - name: Set up Conda environment
         run: |
-          conda env create -f eval_env.yml
+          conda env create -f dtln\eval_env.yml
           conda activate eval_env
 
       - name: Install dependencies
