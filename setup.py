@@ -14,7 +14,8 @@ setup(
     author="YASH",
     url="https://github.com/yashg493/DTLN",
     license="MIT",
-    packages=find_packages(exclude=["tests*"]),
+    package_dir={'': 'src'},
+    packages=find_packages(where="src", exclude=["tests*"]),
     install_requires=[
         str(r)
         for r in pkg_resources.parse_requirements(
@@ -22,7 +23,7 @@ setup(
         )
     ],
     entry_points={
-        "console_scripts": ["dtln=dtln.run_evaluation:cli"],
+        "console_scripts": ["dtln=src.dtln.run_evaluation:cli"],
     },
     include_package_data=True,
     extras_require={"dev": ["pytest"]},
