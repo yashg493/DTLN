@@ -106,12 +106,12 @@ def process_folder(model, folder_name, new_folder_name):
            
 def cli():
     # arguement parser for running directly from the command line
-    parser = argparse.ArgumentParser(description='data evaluation')
-    parser.add_argument('--in_folder', '-i',
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,description='data evaluation')
+    parser.add_argument('--in_folder', '-i',type=str,
                         help='folder with input files')
-    parser.add_argument('--out_folder', '-o',
-                        help='target folder for processed files')
-    parser.add_argument('--model', '-m',
+    parser.add_argument("--output_dir", "-o", type=str, default=".",
+                         help="directory to save the outputs")
+    parser.add_argument('--model', '-m', default="model.h5",
                         help='weights of the enhancement model in .h5 format')
     args = parser.parse_args()
     # determine type of model
@@ -126,7 +126,8 @@ def cli():
     # load weights of the .h5 file
     modelClass.model.load_weights(args.model)
     # process the folder
-    process_folder(modelClass.model, args.in_folder, args.out_folder)
+    # process_folder(modelClass.model, args.in_folder, args.out_folder)
+    process_file(modelClass.model,args.in_folder,args.out_folder)
 
 if __name__ == '__main__':
     cli()
