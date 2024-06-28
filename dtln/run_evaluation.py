@@ -23,7 +23,7 @@ import librosa
 import numpy as np
 import os
 import argparse
-from DTLN_model import DTLN_model
+from dtln.DTLN_model import DTLN_model
 
 
 

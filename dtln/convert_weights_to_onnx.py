@@ -14,7 +14,7 @@ Version: 03.07.2020
 This code is licensed under the terms of the MIT-license.
 """
 
-from DTLN_model import DTLN_model, InstantLayerNormalization
+from dtln.DTLN_model import DTLN_model, InstantLayerNormalization
 import argparse
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Multiply, Conv1D

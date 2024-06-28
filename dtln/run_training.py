@@ -22,7 +22,7 @@ Version: 13.05.2020
 This code is licensed under the terms of the MIT-license.
 """
 
-from DTLN_model import DTLN_model
+from dtln.DTLN_model import DTLN_model
 import os
 
 # use the GPU with idx 0

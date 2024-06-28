@@ -12,7 +12,7 @@ Version: 30.06.2020
 This code is licensed under the terms of the MIT-license.
 """
 
-from DTLN_model import DTLN_model
+from dtln.DTLN_model import DTLN_model
 import argparse
 from pkg_resources import parse_version
 import tensorflow as tf
