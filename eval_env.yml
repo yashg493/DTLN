@@ -1,6 +1,7 @@
 name: eval_env
 
 channels:
+  - conda-forge
   - defaults
 
 dependencies:
