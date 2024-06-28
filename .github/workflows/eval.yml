@@ -32,7 +32,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Create Conda environment
-        run: conda env create -f eval_env.yml
+        run: conda env create -f home/runner/work/DTLN/DTLN/eval_env.yml
 
       - name: Activate Conda environment and install dependencies
         run: |
