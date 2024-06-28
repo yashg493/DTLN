@@ -14,8 +14,7 @@ setup(
     author="YASH",
     url="https://github.com/yashg493/DTLN",
     license="MIT",
-    package_dir={"": "dtln"},
-    packages=find_packages( exclude=["tests*"]),
+    packages=find_packages(exclude=["pretrained_model","home"]),
     install_requires=[
         str(r)
         for r in pkg_resources.parse_requirements(
