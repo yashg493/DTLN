@@ -17,26 +17,27 @@ jobs:
         python-version: [3.8]  # Adjust Python version as per your requirements
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Conda
-        run: |
-          sudo apt-get update
-          sudo apt-get install -yq --no-install-recommends python3-pip python3-dev
-          python -m pip install --upgrade pip setuptools wheel
+      - name: Install Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
 
-      - name: Set up Conda environment
-        run: |
-          conda env create -f eval_env.yml
-          conda activate eval_env
+      - name: Create Conda environment
+        run: conda env create -f eval_env.yml
 
-      - name: Install dependencies
+      - name: Activate Conda environment and install dependencies
         run: |
-          pip install -r requirements.txt  # Adjust as per your project setup
+          conda run -n eval_env pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          pytest dtln\_main_.py
+          conda run -n eval_env pytest dtln/_main_.py
