@@ -104,7 +104,7 @@ def process_folder(model, folder_name, new_folder_name):
         print(file_names[idx] + ' processed successfully!')
     
            
-def cli(model="pretrained_model/model.h5",audio_file=None, out_path=None):
+def cli(model="DTLN/pretrained_model/model.h5",audio_file=None, out_path=None):
     # determine type of model
     if model.find('_norm_') != -1:
         norm_stft = True
