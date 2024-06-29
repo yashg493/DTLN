@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="run",
+    name="dtln",
     version="1.0.0",
     description="Dual-signal Transformation LSTM Network",
     readme="README.md",
