@@ -10,6 +10,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="dtln",
+    packages=["dtln"], 
     version="1.0.0",
     description="Dual-signal Transformation LSTM Network",
     readme="README.md",
