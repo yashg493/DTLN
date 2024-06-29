@@ -18,7 +18,7 @@ setup(
     author="YASH",
     url="https://github.com/yashg493/DTLN",
     license="MIT",
-    packages=find_packages(),
+    # packages=find_packages(),
     install_requires=[
         str(r)
         for r in pkg_resources.parse_requirements(
