@@ -104,18 +104,9 @@ def process_folder(model, folder_name, new_folder_name):
         print(file_names[idx] + ' processed successfully!')
     
            
-def cli():
-    # arguement parser for running directly from the command line
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,description='data evaluation')
-    parser.add_argument('--in_folder', '-i',type=str,
-                        help='folder with input files')
-    parser.add_argument("--output_dir", "-o", type=str, default=".",
-                         help="directory to save the outputs")
-    parser.add_argument('--model', '-m', default="model.h5",
-                        help='weights of the enhancement model in .h5 format')
-    args = parser.parse_args()
+def cli(model="pretrained_model\model.h5",audio_file=None, out_path=None):
     # determine type of model
-    if args.model.find('_norm_') != -1:
+    if model.find('_norm_') != -1:
         norm_stft = True
     else:
         norm_stft = False
@@ -124,10 +115,23 @@ def cli():
     # build the model in default configuration
     modelClass.build_DTLN_model(norm_stft=norm_stft)
     # load weights of the .h5 file
-    modelClass.model.load_weights(args.model)
+    modelClass.model.load_weights(model)
     # process the folder
     # process_folder(modelClass.model, args.in_folder, args.out_folder)
-    process_file(modelClass.model,args.in_folder,args.out_folder)
+    process_file(modelClass.model,audio_file,out_path)
 
 if __name__ == '__main__':
-    cli()
+        # arguement parser for running directly from the command line
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter,description='data evaluation')
+    parser.add_argument('--audio_file', '-i',type=str,
+                        help='input audio')
+    parser.add_argument("--output_path", "-o", type=str, default=".",
+                         help="directory to save the outputs")
+    parser.add_argument('--model', '-m', default="model.h5",
+                        help='weights of the enhancement model in .h5 format')
+    args = parser.parse_args().__dict__
+
+    model=args.pop("model")
+    audio_file:str=args.pop("audio_file")
+    output_path:str=args.pop("output_path")
+    cli(model,audio_file,output_path)
