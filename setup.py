@@ -4,9 +4,12 @@ import platform
 import pkg_resources
 from setuptools import find_packages, setup
 
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
-    name="dtln",
-    py_modules=["run_evaluation"],
+    name="run",
     version="1.0.0",
     description="Dual-signal Transformation LSTM Network",
     readme="README.md",
@@ -14,7 +17,7 @@ setup(
     author="YASH",
     url="https://github.com/yashg493/DTLN",
     license="MIT",
-    packages=find_packages(exclude=["pretrained_model","home"]),
+    packages=find_packages(),
     install_requires=[
         str(r)
         for r in pkg_resources.parse_requirements(
@@ -25,5 +28,4 @@ setup(
         "console_scripts": ["dtln=dtln.run_evaluation:cli"],
     },
     include_package_data=True,
-    extras_require={"dev": ["pytest"]},
 )
